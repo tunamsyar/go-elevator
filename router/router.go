@@ -10,8 +10,13 @@ func SetupRoutes(router *gin.Engine) {
 		c.String(200, "Welcome to Mercu 2")
 	})
 
+	router.POST("/floors", controllers.CreateFloor)
+	router.GET("/floors", controllers.FindFloors)
+	router.GET("/floor/:id", controllers.FindFloors)
+
 	router.POST("/users", controllers.CreateUser)
 	router.GET("/users", controllers.FindUsers)
 	router.GET("/users/:id", controllers.FindUser)
+
 	router.Run("localhost:8080")
 }
