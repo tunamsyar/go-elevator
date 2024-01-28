@@ -1,18 +1,16 @@
 package main
 
 import (
-  "github.com/tunamsyar/go-elevator/controllers"
-  "github.com/tunamsyar/go-elevator/models"
-  "github.com/gin-gonic/gin"
+	"github.com/tunamsyar/go-elevator/models"
+	"github.com/tunamsyar/go-elevator/router"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-  router := gin.Default()
+	models.ConnectDatabase()
 
-  models.ConnectDatabase()
+	ginEngine := gin.Default()
+	router.SetupRoutes(ginEngine)
 
-  router.POST("/users", controllers.CreateUser)
-
-  router.Run("localhost:8080")
 }
-
