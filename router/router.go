@@ -12,11 +12,12 @@ func SetupRoutes(router *gin.Engine) {
 
 	router.POST("/floors", controllers.CreateFloor)
 	router.GET("/floors", controllers.FindFloors)
-	router.GET("/floor/:id", controllers.FindFloors)
+	router.GET("/floors/:id", controllers.FindFloor)
 
 	router.POST("/users", controllers.CreateUser)
 	router.GET("/users", controllers.FindUsers)
 	router.GET("/users/:id", controllers.FindUser)
+	router.POST("/users/:id/add_floor", controllers.AddFloorToUser)
 
 	router.Run("localhost:8080")
 }
