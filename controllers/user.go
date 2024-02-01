@@ -59,7 +59,7 @@ func CreateUser(c *gin.Context) {
 func FindUsers(c *gin.Context) {
 	var users []models.User
 
-	models.DB.Find(&users)
+	models.DB.Preload("Floors").Find(&users)
 
 	c.JSON(http.StatusOK, gin.H{"data": users})
 }
@@ -67,7 +67,7 @@ func FindUsers(c *gin.Context) {
 func FindUser(c *gin.Context) {
 	var user models.User
 
-	if err := models.DB.Where("id = ?", c.Param("id")).First(&user).Error; err != nil {
+	if err := models.DB.Where("id = ?", c.Param("id")).Preload("Floors").First(&user).Error; err != nil {
 		c.AbortWithStatusJSON(http.StatusNotFound, gin.H{"error": err.Error()})
 		return
 	}

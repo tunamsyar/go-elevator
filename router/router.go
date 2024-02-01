@@ -18,6 +18,6 @@ func SetupRoutes(router *gin.Engine) {
 	router.GET("/users", controllers.FindUsers)
 	router.GET("/users/:id", controllers.FindUser)
 	router.POST("/users/:id/add_floor", controllers.AddFloorToUser)
-
+  router.POST("/users/:id/floor_selection", controllers.FloorSelection)
 	router.Run("localhost:8080")
 }
