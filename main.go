@@ -12,5 +12,4 @@ func main() {
 
 	ginEngine := gin.Default()
 	router.SetupRoutes(ginEngine)
-
 }

@@ -22,3 +22,18 @@ func SortAndRemoveDuplicates(arr []int) []int {
 
   return uniqueArr
 }
+
+func SplitArrayToLowHighZone(arr []int) ([]int, []int) {
+  var lowZone []int
+  var highZone []int
+
+  for _, num := range arr {
+    if num >= 1 && num <= 3 {
+      lowZone = append(lowZone, num)
+    } else if num >= 4 && num <= 5 {
+      highZone = append(highZone, num)
+    }
+  }
+
+  return lowZone, highZone
+}
